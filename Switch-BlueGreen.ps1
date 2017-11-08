@@ -4,11 +4,11 @@ function Switch-BlueGreen {
     [parameter(Mandatory = $True)]
     [string] $WebsiteName,
     [parameter(Mandatory = $True)]
-    [string] $WebApplicationPath = "\",
+    [string] $WebApplicationPath = "",
     [string]$VirtualRootPath = $Script:BlueGreenConfig.VirtualRootPath
   )
 
-  $WebApplication = "$WebsiteName\$WebApplicationPath"
+  $WebApplication = "$WebsiteName/$WebApplicationPath"
 
   $liveSite = "$VirtualRootPath\$WebApplication"
   $PhysicalApplicationPath = Get-BlueGreenPhysicalPath -WebApplication $WebApplication

@@ -4,11 +4,11 @@ function Backup-BlueGreenLive {
     [parameter(Mandatory = $True)]
     [string]$WebsiteName,
     [parameter(Mandatory = $True)]
-    [string]$WebApplicationPath = "\",
+    [string]$WebApplicationPath = "",
     [string]$PhysicalBackupPath = $Script:BlueGreenConfig.PhysicalBackupPath
   )
 
-  $WebApplication = "$WebsiteName\$WebApplicationPath"
+  $WebApplication = "$WebsiteName/$WebApplicationPath"
   Write-Host "$($MyInvocation.MyCommand): starting for '$WebApplication'"
 
   $PhysicalApplicationPath = Get-BlueGreenPhysicalPath -WebApplication $WebApplication

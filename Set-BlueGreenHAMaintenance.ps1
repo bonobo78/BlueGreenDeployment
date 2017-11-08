@@ -4,14 +4,14 @@ Function Set-BlueGreenHAMaintenance {
     [parameter(Mandatory = $True)]
     [string]$WebsiteName,
     [parameter(Mandatory = $True)]
-    [string]$WebApplicationPath = "\",
+    [string]$WebApplicationPath = "",
     [parameter(Mandatory = $True)]
     [ValidateSet("online","offline")]
     [string]$action = "offline",
     [string]$HAserver
   )
 
-  $WebApplication = "$WebsiteName\$WebApplicationPath"
+  $WebApplication = "$WebsiteName/$WebApplicationPath"
 
   $PhysicalApplicationPath = Get-BlueGreenPhysicalPath -WebApplication $WebApplication
   $OnlinePath = $PhysicalApplicationPath.online
